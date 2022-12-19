@@ -2528,14 +2528,22 @@ let sum = 0;
 
 function getGameResult(Other,Me){
     if(Other === Me){
-        return tie+tie;
+       if(Me === me.X){
+          return rockWin + tie; 
+       }
+       if(Me === me.Y){
+          return paperWin + tie;
+       }
+       if(Me === me.Z){
+        return scissorsWin + tie;
+       } 
     }
     
     if(Other !== Me){
         //case rock
         if(Other === me.X || Me === me.X){
             if(Other === me.Y){
-                return lose + rockWin;   
+                return rockWin;   
             }
             if(Me === me.Y){
                 return paperWin + meWin;
@@ -2544,7 +2552,7 @@ function getGameResult(Other,Me){
         //case paper
         if(Other === me.Y || Me === me.Y){
             if(Other === me.Z){
-                return lose + paperWin;
+                return paperWin;
             }
             if(Me === me.Z){
                 return scissorsWin + meWin;
@@ -2554,7 +2562,7 @@ function getGameResult(Other,Me){
         //case scissors
         if(Other === me.Z || Me === me.Z){
             if(Other === me.X){
-                return lose + scissorsWin;
+                return scissorsWin;
             }
             if(Me === me.X){
                 return rockWin + meWin;
